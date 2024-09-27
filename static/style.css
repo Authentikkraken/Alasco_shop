@@ -1,0 +1,54 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Manrope:wght@200..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.redressed{
+    font-family: 'Redressed', cursive;
+}
+.merriweather{
+    font-family: 'Merriweather', serif;
+}
+
+.cc-navbar{
+    background-color: rgba(0,0,0, 0.55);
+    font-family: 'Merriweather', serif;
+    box-shadow: 1px 1px 3px rgba(255 ,255,255, 0.54);
+    
+}
+.order{
+    color: #fff;
+    background-color: var(--bs-teal);
+}
+.cc-navbar .nav-link{
+    border-bottom: 1px solid transparent;
+    transition: padding-bottom .4s ease-in-out, border-color .3s ease;
+}
+
+.cc-navbar .nav-link:hover{
+    padding-bottom:20px ;
+    border-bottom-color:var(--bs-teal) ;
+}
+
+.btn-order{
+    color: var(--bs-teal);
+    border-color: var(--bs-teal);
+    transition: 0.5s;
+}
+.btn-order:hover,
+.btn-order:active {
+    color: #fff;
+    background-color: var(--bs-teal);
+}
+
+.banner{
+    background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0, .5)),url('../images/984152dad97f5717d2a2a01faf2433ee.jpeg') center center fixed no-repeat;
+    background-size: cover;
+    height: 700px;
+    
+   
+}
+
+.banner .banner-desc{
+    font-size: 48px;
+    color: #fff;
+}

@@ -1,0 +1,35 @@
+{% extends 'shop/base.html'%}
+
+
+{% block content%}
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div>
+            <img src="{{product.image}}" width="500px" height="500px" alt="">
+        </div>
+
+    </div>
+        <div class="col-md-6">
+            <div class="text-warning display-3">
+                {{product.titre}}
+            </div>
+            <div class="text-danger ">
+                Prix :  {{product.prix}}FCFA
+            </div>
+            <div  class=" fw-bold ">
+              {{product.description}} 
+            </div>
+            
+            <a href="{% url 'accueil'%}"><button class="btn btn-success">Retour </button></a>
+            
+          
+
+        </div>
+    
+</div>
+
+{% endblock%}
+
