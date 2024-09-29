@@ -1,0 +1,147 @@
+{% extends "shop/base.html"%}
+
+ {% block content%}
+
+<div class="row">
+    <div class="col-md-12">
+        <ul id="item-list" class="list-group" >
+          <h3 class="text-center"> Voici votre liste de produits</h3>
+            
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form class="row g-3 needs-validation" method="POST" novalidate>
+      {% csrf_token %}
+      <input type="hidden" id="items", name="items">
+      <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="nom" name="nom" placeholder="Yao" value="" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Prénom</label>
+        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Albert" value="" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Numéro de téléphone</label>
+        <input type="number" class="form-control" id="numero" name="numero" placeholder="+225 0758900115" value="" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="Koumassi-Remblai" value="" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustomUsername" class="form-label">E-mail</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text" >@</span>
+          <input type="email" class="form-control" id="email" placeholder="alascoshop@gmail.com" name="email" aria-describedby="inputGroupPrepend" required>
+          <div class="invalid-feedback">
+            Please choose a username.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom03" class="form-label">Ville</label>
+        <input type="text" class="form-control" placeholder="Abidjan" id="ville" name="ville" required>
+        <div class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom04" class="form-label">Pays </label>
+        <select class="form-select" id="pays" name="pays" required>
+          <option selected  value="Côte d'Ivoire">Côte d'Ivoire</option>
+          <option>Caméroun</option>
+          <option>Burkina Faso</option>
+          <option>Mali</option>
+          <option>Sénégale</option>
+          <option>Togo</option>
+          <option>Ghana</option>
+          <option>Autre</option>
+        </select>
+        <div class="invalid-feedback">
+          Please select a valid state.
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom05" class="form-label">Zip</label>
+        <input type="text" class="form-control" id="zipcode" name="zipcode" required>
+        <div class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom05" class="form-label">SOMME TOTAL À PAYER</label>
+        <input type="readonlyiç" class="form-control bg-dark text-warning" id="total" name="total" required>
+        <div class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+      </div>
+      <div class="col-12">
+       
+       
+      </div>
+      <div class="col-12">
+       <button class="btn btn-primary" type="submit" >Commander</button>
+       <a href="mailto: myyakroshop@gmail.com?subject=Nouvelle commande&body=Salut, vous avez une nouvelle commande ">Envoyer un message à Alasco </a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock%}
+
+
+{% block js%}
+
+<script type="text/javascript">
+  if(localStorage.getItem('panier')==null){
+    var panier = {};
+  }else{
+    panier = JSON.parse(localStorage.getItem('panier'));
+  }
+  var total = 0;
+  var nombre = 0;
+
+  for(item in panier ){
+    let nom = panier [item][1];
+    let quantite = panier[item][0];
+    let prix = panier[item][2]
+    nombre += quantite;
+    total += prix; 
+    let itemString = `<li class="list-group-item d-flex justify-content-between align-items-center">
+              ${nom}
+              <span class="badge text-bg-primary rounded-pill"> QUANTITE : ${quantite}</span>
+              <span class="badge text-bg-warning rounded-pill"> PRIX : ${prix} FCFA</span>
+            </li>`;
+            $('#item-list').append(itemString)
+  }
+  let itemNombre = `<li class="list-group-item d-flex justify-content-between align-items-center">
+              <b class = "bg-danger text-light" >PRIX ET QUANTITE TOTALES</b>
+              <span class="badge text-bg-danger rounded-pill">QUANTITE TOTAL : ${nombre}</span>
+              <span class="badge text-bg-danger rounded-pill">PRIX TOTAL :  ${total} FCFA</span>
+            </li>`;
+            $('#item-list').append(itemNombre);
+            $('#total').val(total + 'FCFA') ;
+
+  $('#items').val(JSON.stringify(panier));
+  
+
+</script>
+
+
+{% endblock%}
