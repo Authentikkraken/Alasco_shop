@@ -24,7 +24,7 @@ TEMPLATES_DIRS = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = 'django-insecure-24ulcxr(6z+lcuu(eso2&rqc!p6!0at)$$3p*7r@ol=9q1-qs9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://alasco-shop-6ek2.onrender.com','127.0.0.1']
 
