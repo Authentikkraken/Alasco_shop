@@ -26,7 +26,6 @@ TEMPLATES_DIRS = os.path.join(BASE_DIR,'templates')
 from decouple import config
 import dj_database_url
 
-
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
